@@ -1,4 +1,5 @@
 import java.util.HashSet;
+import java.util.Iterator;
 
 public class RolDePagos {
     HashSet<Empleado> setEmpleados;
@@ -22,8 +23,11 @@ public class RolDePagos {
         return false;
     }
 
+
     public boolean modificarEmpleado(Empleado dato) {
-        for (Empleado e : setEmpleados) {
+        Iterator<Empleado> setIterator = setEmpleados.iterator();
+        while (setIterator.hasNext()){
+            Empleado e = setIterator.next();
             if (e.getCedula()== dato.getCedula()){
                 e.setNombre(dato.getNombre());
                 e.setSalario(dato.getSalario());
@@ -34,14 +38,18 @@ public class RolDePagos {
     }
 
     public void calcularSeguroSocial(){
-        for (Empleado e : setEmpleados){
+        Iterator<Empleado> setIterator = setEmpleados.iterator();
+        while (setIterator.hasNext()){
+            Empleado e = setIterator.next();
             e.setAporteSeguroSocial(e.getSalario()*0.0935);
         }
     }
 
     public void calcularImpuestoalaRenta(){
         double impuestoRentaAnual;
-        for (Empleado e : setEmpleados){
+        Iterator<Empleado> setIterator = setEmpleados.iterator();
+        while (setIterator.hasNext()){
+            Empleado e = setIterator.next();
             if((e.getSalario()*12) <= 5000){
                 impuestoRentaAnual=0;
                 e.setImpuestoRenta(impuestoRentaAnual);
@@ -63,7 +71,9 @@ public class RolDePagos {
 
     public String generarInforme(){
         String resultado = "";
-        for(Empleado e : setEmpleados){
+        Iterator<Empleado> setIterator = setEmpleados.iterator();
+        while (setIterator.hasNext()){
+            Empleado e = setIterator.next();
             resultado += e.toString2() + "";
         }
         return resultado;
