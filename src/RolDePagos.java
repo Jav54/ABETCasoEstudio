@@ -61,14 +61,6 @@ public class RolDePagos {
         }
     }
 
-    public String listarEmpleados(){
-        String resultado = "";
-        for(Empleado e : setEmpleados){
-            resultado += e.toString();
-        }
-        return resultado;
-    }
-
     public String generarInforme(){
         String resultado = "";
         for(Empleado e : setEmpleados){
